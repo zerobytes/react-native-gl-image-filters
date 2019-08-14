@@ -16,7 +16,7 @@ export default ({
 	});
 
 	return GL.createComponent(
-		({ children: t, width, height, ...compProps }) => {
+		({ children: t,  ...compProps }) => {
 			const innerProps = {};
 			console.log('INSIDE REACT GL IMAGE')
 			receiveValues.forEach(receive => {
