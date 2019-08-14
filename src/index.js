@@ -27,9 +27,9 @@ export default GL.createComponent(
   brightness,
   temperature
 }) => (
-  <Sepia sepia={sepia} height={height} width={width}>
+//   <Sepia sepia={sepia} height={height} width={width}>
     <Hue hue={hue} height={height} width={width}>
-      <Negative factor={negative}  height={height} width={width}>
+      {/* <Negative factor={negative}  height={height} width={width}> */}
         <Temperature temp={temperature}  height={height} width={width}>
           <ContrastSaturationBrightness
             contrast={contrast}
@@ -44,9 +44,9 @@ export default GL.createComponent(
             </Blur>
           </ContrastSaturationBrightness>
         </Temperature>
-      </Negative>
+      {/* </Negative> */}
     </Hue>
-  </Sepia>
+//   </Sepia>
 ),
 {
   displayName: "ImageFilter",
