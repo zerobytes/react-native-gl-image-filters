@@ -1,6 +1,6 @@
 {
   "name": "react-native-gl-image-filters",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React-Native image filters using gl-react",
   "main": "lib/index.js",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GregoryNative/react-native-gl-image-filters.git"
+    "url": "git+https://github.com/zerobytes/react-native-gl-image-filters.git"
   },
   "author": "Gregory <gregorynative@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GregoryNative/react-native-gl-image-filters/issues"
+    "url": "https://github.com/zerobytes/react-native-gl-image-filters/issues"
   },
-  "homepage": "https://github.com/GregoryNative/react-native-gl-image-filters#readme",
+  "homepage": "https://github.com/zerobytes/react-native-gl-image-filters#readme",
   "peerDependencies": {
     "gl-react": "~2.2.0",
     "gl-react-native": "2.48.0"

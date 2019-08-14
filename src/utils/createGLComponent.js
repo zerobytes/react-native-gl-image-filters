@@ -16,9 +16,9 @@ export default ({
   });
 
   return GL.createComponent(
-    ({ children: t, ...compProps }) => {
+    ({ children: t,width, height, ...compProps }) => {
       const innerProps = {};
-
+		console.log('INSIDE REACT GL IMAGE')
       receiveValues.forEach(receive => {
         Object.keys(compProps).forEach(key => {
           if (receive === "resolution") {
@@ -33,8 +33,13 @@ export default ({
 
       return (
         <GL.Node
-          shader={shaders.shader}
-          uniforms={{ t, ...innerProps }}
+		  shader={shaders.shader}
+		  width={width}
+		  height={height}
+          uniforms={{ 
+			  t, ...innerProps,
+			  resolution: [width, height],
+			 }}
         />
       );
     },
