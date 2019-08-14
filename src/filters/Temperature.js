@@ -5,10 +5,14 @@ import PropTypes from "prop-types";
 import createGLComponent from "../utils/createGLComponent";
 
 export default createGLComponent({
-  displayName: "Temperature",
-  defaultProps: { temp: 6500 },
-  propTypes: { temp: PropTypes.number },
-  frag: `
+	displayName: "Temperature",
+	defaultProps: { temp: 6500 },
+	propTypes: {
+		temp: PropTypes.number,
+		width: PropTypes.number.isRequired,
+		height: PropTypes.number.isRequired,
+	},
+	frag: `
     precision highp float;
     varying vec2 uv;
     uniform sampler2D t;
@@ -45,5 +49,5 @@ export default createGLComponent({
       gl_FragColor = vec4(outColor, 1.0);
     }
   `,
-  receiveValues: ["temp","resolution"]
+	receiveValues: ["temp", "resolution"]
 });

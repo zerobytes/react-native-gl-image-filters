@@ -10,7 +10,9 @@ export default createGLComponent({
     factor: 0
   },
   propTypes: {
-    factor: PropTypes.number
+	factor: PropTypes.number,
+	width: PropTypes.number.isRequired,
+	height: PropTypes.number.isRequired,
   },
   frag: `
     precision highp float;

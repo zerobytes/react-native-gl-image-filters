@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import mixArrays from "../utils/mixArrays";
 
 const shaders = GL.Shaders.create({
-  Sepia: {
-    frag: `
+	Sepia: {
+		frag: `
       precision highp float;
       varying vec2 uv;
       uniform sampler2D t;
@@ -16,40 +16,42 @@ const shaders = GL.Shaders.create({
         gl_FragColor = sepia * texture2D(t, uv);
       }
     `
-  }
+	}
 });
 
 export default GL.createComponent(
-({ children: t, sepia: s, width, height }) => {
-  const sepia = mixArrays([
-    1, 0, 0, 0,
-    0, 1, 0, 0,
-    0, 0, 1, 0,
-    0, 0, 0, 1
-  ], [
-    .3, .3, .3, 0,
-    .6, .6, .6, 0,
-    .1, .1, .1, 0,
-    0.2, 0, -0.2, 1
-  ], s);
+	({ children: t, sepia: s, width, height }) => {
+		const sepia = mixArrays([
+			1, 0, 0, 0,
+			0, 1, 0, 0,
+			0, 0, 1, 0,
+			0, 0, 0, 1
+		], [
+				.3, .3, .3, 0,
+				.6, .6, .6, 0,
+				.1, .1, .1, 0,
+				0.2, 0, -0.2, 1
+			], s);
 
-  return (
-    <GL.Node
-      shader={shaders.Sepia}
-      uniforms={{ 
-		  t, sepia ,
-		  resolution:[width, height]
-		}}
-    />
-  );
-},
-{
-  displayName: "Sepia",
-  defaultProps: {
-    sepia: 0,
-  },
-  propTypes: {
-    children: PropTypes.any.isRequired,
-    sepia: PropTypes.number,
-  }
-});
+		return (
+			<GL.Node
+				shader={shaders.Sepia}
+				uniforms={{
+					t, sepia,
+					resolution: [width, height]
+				}}
+			/>
+		);
+	},
+	{
+		displayName: "Sepia",
+		defaultProps: {
+			sepia: 0,
+		},
+		propTypes: {
+			children: PropTypes.any.isRequired,
+			width: PropTypes.number.isRequired,
+			height: PropTypes.number.isRequired,
+			sepia: PropTypes.number,
+		}
+	});

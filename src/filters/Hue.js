@@ -5,10 +5,14 @@ import PropTypes from "prop-types";
 import createGLComponent from "../utils/createGLComponent";
 
 export default createGLComponent({
-  displayName: "Hue",
-  defaultProps: { hue: 0 },
-  propTypes: { hue: PropTypes.number },
-  frag: `
+	displayName: "Hue",
+	defaultProps: { hue: 0 },
+	propTypes: {
+		hue: PropTypes.number,
+		width: PropTypes.number.isRequired,
+		height: PropTypes.number.isRequired,
+	},
+	frag: `
     precision highp float;
     varying vec2 uv;
     uniform sampler2D t;
@@ -28,5 +32,5 @@ export default createGLComponent({
       gl_FragColor = vec4(yiq2rgb * yFinalColor, c.a);
     }
   `,
-  receiveValues: ["hue","resolution"]
+	receiveValues: ["hue", "resolution"]
 });

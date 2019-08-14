@@ -5,10 +5,14 @@ import PropTypes from "prop-types";
 import createGLComponent from "../utils/createGLComponent";
 
 export default createGLComponent({
-  displayName: "Negative",
-  defaultProps: { factor: 1 },
-  propTypes: { factor: PropTypes.number },
-  frag: `
+	displayName: "Negative",
+	defaultProps: { factor: 1 },
+	propTypes: {
+		factor: PropTypes.number,
+		width: PropTypes.number.isRequired,
+		height: PropTypes.number.isRequired,
+	},
+	frag: `
     precision highp float;
     varying vec2 uv;
     uniform sampler2D t;
@@ -20,5 +24,5 @@ export default createGLComponent({
       gl_FragColor = vec4(mix(c.rgb, 1.0 - c.rgb, factor), c.a);
     }
   `,
-  receiveValues: ["factor","resolution"]
+	receiveValues: ["factor", "resolution"]
 });

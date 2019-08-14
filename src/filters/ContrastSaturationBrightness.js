@@ -5,18 +5,20 @@ import PropTypes from "prop-types";
 import createGLComponent from "../utils/createGLComponent";
 
 export default createGLComponent({
-  displayName: "ContrastSaturationBrightness",
-  defaultProps: {
-    contrast: 1,
-    saturation: 1,
-    brightness: 1
-  },
-  propTypes: {
-    contrast: PropTypes.number,
-    saturation: PropTypes.number,
-    brightness: PropTypes.number
-  },
-  frag: `
+	displayName: "ContrastSaturationBrightness",
+	defaultProps: {
+		contrast: 1,
+		saturation: 1,
+		brightness: 1
+	},
+	propTypes: {
+		contrast: PropTypes.number,
+		saturation: PropTypes.number,
+		brightness: PropTypes.number,
+		width: PropTypes.number.isRequired,
+		height: PropTypes.number.isRequired,
+	},
+	frag: `
     precision highp float;
     varying vec2 uv;
     uniform sampler2D t;
@@ -40,5 +42,5 @@ export default createGLComponent({
       );
     }
   `,
-  receiveValues: ["contrast", "saturation", "brightness","resolution"]
+	receiveValues: ["contrast", "saturation", "brightness", "resolution"]
 });
