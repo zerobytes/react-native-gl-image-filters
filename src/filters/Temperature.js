@@ -6,7 +6,11 @@ import createGLComponent from "../utils/createGLComponent";
 
 export default createGLComponent({
 	displayName: "Temperature",
-	defaultProps: { temp: 6500 },
+	defaultProps: {
+		temp: 6500,
+		width: 240,
+		height: 240,
+	},
 	propTypes: {
 		temp: PropTypes.number,
 		width: PropTypes.number.isRequired,

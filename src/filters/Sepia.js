@@ -49,6 +49,8 @@ export default GL.createComponent(
 		displayName: "Sepia",
 		defaultProps: {
 			sepia: 0,
+			width: 240,
+			height: 240,
 		},
 		propTypes: {
 			children: PropTypes.any.isRequired,

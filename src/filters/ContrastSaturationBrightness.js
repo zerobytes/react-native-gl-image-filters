@@ -9,7 +9,9 @@ export default createGLComponent({
 	defaultProps: {
 		contrast: 1,
 		saturation: 1,
-		brightness: 1
+		brightness: 1,
+		width: 240,
+		height: 240,
 	},
 	propTypes: {
 		contrast: PropTypes.number,

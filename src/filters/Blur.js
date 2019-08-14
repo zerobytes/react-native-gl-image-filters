@@ -41,6 +41,7 @@ export default GL.createComponent(
 		passes,
 		directionForPass
 	}) => {
+		console.log('BLUR',width,height)
 		const rec = pass =>
 			pass <= 0 ? (
 				children
@@ -64,7 +65,9 @@ export default GL.createComponent(
 		displayName: "Blur",
 		defaultProps: {
 			passes: 2,
-			directionForPass: directionForPassDefault
+			directionForPass: directionForPassDefault,
+			width: 240,
+			height: 240,
 		},
 		propTypes: {
 			factor: PropTypes.number.isRequired,

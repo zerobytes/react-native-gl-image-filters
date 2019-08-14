@@ -6,7 +6,11 @@ import createGLComponent from "../utils/createGLComponent";
 
 export default createGLComponent({
 	displayName: "Negative",
-	defaultProps: { factor: 1 },
+	defaultProps: {
+		factor: 1,
+		width: 240,
+		height: 240,
+	},
 	propTypes: {
 		factor: PropTypes.number,
 		width: PropTypes.number.isRequired,

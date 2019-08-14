@@ -6,7 +6,11 @@ import createGLComponent from "../utils/createGLComponent";
 
 export default createGLComponent({
 	displayName: "Hue",
-	defaultProps: { hue: 0 },
+	defaultProps: {
+		hue: 0,
+		width: 240,
+		height: 240,
+	},
 	propTypes: {
 		hue: PropTypes.number,
 		width: PropTypes.number.isRequired,
