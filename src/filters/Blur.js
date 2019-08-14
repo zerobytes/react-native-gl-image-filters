@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import directionForPassDefault from "../utils/directionForPassDefault";
 
 const shaders = GL.Shaders.create({
-  blur: {
-    frag: `
+	blur: {
+		frag: `
       precision highp float;
       varying vec2 uv;
       uniform sampler2D t;
@@ -28,51 +28,51 @@ const shaders = GL.Shaders.create({
         gl_FragColor = blur9(t, uv, resolution, direction);
       }
     `
-  }
+	}
 });
 
 export default GL.createComponent(
-({
-  width,
-  height,
-  pixelRatio,
-  factor,
-  children,
-  passes,
-  directionForPass
-}) => {
-  const rec = pass =>
-    pass <= 0 ? (
-      children
-    ) : (
-      <GL.Node
-        shader={shaders.blur}
-        width={width}
-        height={height}
-        pixelRatio={pixelRatio}
-        uniforms={{
-          direction: directionForPass(pass, factor, passes),
-          resolution: [width, height],
-          t: rec(pass - 1)
-        }}
-      />
-    );
+	({
+		width,
+		height,
+		pixelRatio,
+		factor,
+		children,
+		passes,
+		directionForPass
+	}) => {
+		const rec = pass =>
+			pass <= 0 ? (
+				children
+			) : (
+					<GL.Node
+						shader={shaders.blur}
+						width={width || 1}
+						height={height || 1}
+						pixelRatio={pixelRatio}
+						uniforms={{
+							direction: directionForPass(pass, factor, passes),
+							resolution: [width || 1, height || 1],
+							t: rec(pass - 1)
+						}}
+					/>
+				);
 
-  return rec(passes);
-},
-{
-  displayName: "Blur",
-  defaultProps: {
-    passes: 2,
-    directionForPass: directionForPassDefault
-  },
-  propTypes: {
-    factor: PropTypes.number.isRequired,
-    children: PropTypes.any.isRequired,
-    passes: PropTypes.number,
-    directionForPass: PropTypes.func,
-    width: PropTypes.any,
-    height: PropTypes.any,
-    pixelRatio: PropTypes.number
-  }
-});
+		return rec(passes);
+	},
+	{
+		displayName: "Blur",
+		defaultProps: {
+			passes: 2,
+			directionForPass: directionForPassDefault
+		},
+		propTypes: {
+			factor: PropTypes.number.isRequired,
+			children: PropTypes.any.isRequired,
+			passes: PropTypes.number,
+			directionForPass: PropTypes.func,
+			width: PropTypes.any,
+			height: PropTypes.any,
+			pixelRatio: PropTypes.number
+		}
+	});

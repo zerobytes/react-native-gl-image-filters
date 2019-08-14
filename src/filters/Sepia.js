@@ -32,7 +32,7 @@ export default GL.createComponent(
 				.1, .1, .1, 0,
 				0.2, 0, -0.2, 1
 			], s);
-
+		console.log('SEPIA', width, height)
 		return (
 			<GL.Node
 				shader={shaders.Sepia}
