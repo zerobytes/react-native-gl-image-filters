@@ -36,8 +36,8 @@ export default GL.createComponent(
 		return (
 			<GL.Node
 				shader={shaders.Sepia}
-				width={width||1}
-				height={height||1}
+				width={width || 1}
+				height={height || 1}
 				uniforms={{
 					t, sepia,
 					resolution: [width || 1, height || 1]
