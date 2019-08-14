@@ -20,7 +20,7 @@ const shaders = GL.Shaders.create({
 });
 
 export default GL.createComponent(
-({ children: t, sepia: s }) => {
+({ children: t, sepia: s, width, height }) => {
   const sepia = mixArrays([
     1, 0, 0, 0,
     0, 1, 0, 0,
@@ -36,7 +36,10 @@ export default GL.createComponent(
   return (
     <GL.Node
       shader={shaders.Sepia}
-      uniforms={{ t, sepia }}
+      uniforms={{ 
+		  t, sepia ,
+		  resolution=[width, height]
+		}}
     />
   );
 },

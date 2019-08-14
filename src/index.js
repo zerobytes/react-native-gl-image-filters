@@ -27,14 +27,15 @@ export default GL.createComponent(
   brightness,
   temperature
 }) => (
-  <Sepia sepia={sepia}>
-    <Hue hue={hue}>
-      <Negative factor={negative}>
-        <Temperature temp={temperature}>
+  <Sepia sepia={sepia} height={height} width={width}>
+    <Hue hue={hue} height={height} width={width}>
+      <Negative factor={negative}  height={height} width={width}>
+        <Temperature temp={temperature}  height={height} width={width}>
           <ContrastSaturationBrightness
             contrast={contrast}
             saturation={saturation}
-            brightness={brightness}
+			brightness={brightness}
+			height={height} width={width}
           >
             <Blur factor={blur} passes={4} height={height} width={width}>
               <Sharpen factor={sharpen} height={height} width={width}>

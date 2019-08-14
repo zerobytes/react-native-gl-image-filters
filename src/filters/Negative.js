@@ -20,5 +20,5 @@ export default createGLComponent({
       gl_FragColor = vec4(mix(c.rgb, 1.0 - c.rgb, factor), c.a);
     }
   `,
-  receiveValues: ["factor"]
+  receiveValues: ["factor","resolution"]
 });

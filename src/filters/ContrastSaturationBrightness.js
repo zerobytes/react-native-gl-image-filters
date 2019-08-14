@@ -40,5 +40,5 @@ export default createGLComponent({
       );
     }
   `,
-  receiveValues: ["contrast", "saturation", "brightness"]
+  receiveValues: ["contrast", "saturation", "brightness","resolution"]
 });
