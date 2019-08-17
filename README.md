@@ -44,8 +44,7 @@ Props for ImageFilters component
 | contrast | Contrast filter | Number |   | 1 |0| 3 |
 | saturation | Saturation filter | Number |   | 1 |0|3 |
 | brightness | Brightness filter | Number |   | 1 |0| 3 |
-| temperature | Temperature filter | Number |   | 10500 |
-1000| 20000 |
+| temperature | Temperature filter | Number |   | 10500 | 1000| 20000 |
 | rotation | Rotation filter | Number |   | 0 |0| 6.2 |
 | scale | Scale filter | Number |   | 0 |0| 2 |
 
