@@ -11,8 +11,8 @@ import Sharpen from "./filters/Sharpen";
 import Negative from "./filters/Negative";
 import Temperature from "./filters/Temperature";
 import ContrastSaturationBrightness from "./filters/ContrastSaturationBrightness";
-import Rotate from "./filters/Rotate";
-// console.log('INDEX OF REACT GL IMAGE 8')
+import RotateScale from "./filters/RotateScale";
+
 export default GL.createComponent(
 	({
 		children,
@@ -42,7 +42,7 @@ export default GL.createComponent(
 							>
 								<Blur factor={blur} passes={4} height={height} width={width}>
 									<Sharpen factor={sharpen} height={height} width={width} >
-										<Rotate
+										<RotateScale
 											angle={rotation}
 											scale={scale}
 											leftRight={position ? position.leftRight: 0.0}
@@ -50,7 +50,7 @@ export default GL.createComponent(
 											height={height} width={width} 
 										>
 											{children}
-										</Rotate>
+										</RotateScale>
 									</Sharpen>
 								</Blur>
 							</ContrastSaturationBrightness>

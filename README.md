@@ -1,17 +1,27 @@
+# OpenGL Image Editor for React-Native
+
 OpenGL bindings for React Native to implement complex effects over images and components, in the descriptive VDOM paradigm. You can use predefined filters:
-  - blur
-  - contrast
-  - saturation
-  - brightness
-  - hue
-  - negative
-  - sepia
-  - sharpen
-  - tempreture.
+
+
+
+## Features
+  - Blur
+  - Contrast
+  - Saturation
+  - Brightness
+  - Hue
+  - Negative
+  - Sepia
+  - Sharpen
+  - Temperature
+  - Rotation
+  - Scale
 
 ![](https://github.com/GregoryNative/react-native-gl-image-filters/blob/master/saytama_example.gif)
 
-**`gl-react-native` is an implementation of `gl-react` for `react-native`. Please [read the main gl-react README](https://github.com/ProjectSeptemberInc/gl-react/) for more information.**
+`gl-react-native` is an implementation of `gl-react` for `react-native`.
+
+*Please [read the main gl-react README](https://github.com/ProjectSeptemberInc/gl-react/) for more information.**
 
 ## Documentation
 
@@ -19,33 +29,38 @@ OpenGL bindings for React Native to implement complex effects over images and co
 
 Props for ImageFilters component
 
-| Name | Description | Type | Required | Default Value |
-| :--- | :----- | :--- | :---: | :---: |
-| children | Inner component or url for image | Any |  |  |
-| width | Width of component | Number |   | 240 |
-| height | Height of component | Number |   | 240 |
-| hue | Hue filter | Number |   | 0 |
-| blur | Blur filter | Number |   | 0 |
-| sepia | Sepia filter | Number |   | 0 |
-| sharpen | Sharpen filter | Number |   | 0 |
-| negative | Negative filter | Number |   | 0 |
-| contrast | Contrast filter | Number |   | 1 |
-| saturation | Saturation filter | Number |   | 1 |
-| brightness | Brightness filter | Number |   | 1 |
-| temperature | Temperature filter | Number |   | 6500 |
+
+
+| Name | Description | Type | Required | Default Value | Minumum Value | Max Value |
+| :--- | :----- | :--- | :---: | :---: | :---: | :---: |
+| children | Inner component or url for image | Any |  |  | 
+| width | Width of component | Number |   | 240 | |  |
+| height | Height of component | Number |   | 240 ||  |
+| hue | Hue filter | Number |   | 0 |-2| 2 |
+| blur | Blur filter | Number |   | 0 |0|  |
+| sepia | Sepia filter | Number |   | 0 |0|  |
+| sharpen | Sharpen filter | Number |   | 0 | 0 | 3 |
+| negative | Negative filter | Number |   | 0 ||  |
+| contrast | Contrast filter | Number |   | 1 |0| 3 |
+| saturation | Saturation filter | Number |   | 1 |0|3 |
+| brightness | Brightness filter | Number |   | 1 |0| 3 |
+| temperature | Temperature filter | Number |   | 10500 |
+1000| 20000 |
+| rotation | Rotation filter | Number |   | 0 |0| 6.2 |
+| scale | Scale filter | Number |   | 0 |0| 2 |
 
 ## Installation
 
 ```
 npm i --save gl-react-native@2.48.0
 npm i --save gl-react@2.2.0
-npm i --save react-native-gl-image-filters
+npm i --save react-native-picture-editor
 ```
 or
 ```
 yarn add gl-react-native@2.48.0
 yarn add gl-react@2.2.0
-yarn add react-native-gl-image-filters
+yarn add react-native-picture-editor
 ```
 
 ### Configure your React Native Application
@@ -101,10 +116,11 @@ import ImageFilters from "react-native-gl-image-filters";
 
 export default class App extends Component {
   save = () => {
-    if (!this.image) return;
+    if (!this.imageRef) return;
 
-    this.image.captureFrame() // <= you can pass config here, check docs
-      .then(console.warn);
+    this.imageRef.captureFrame().then(base64Data => {
+		//Can save de base64 as blob, write file, etc...
+	});
   }
 
   render() {
@@ -116,15 +132,21 @@ export default class App extends Component {
         <Surface
           width={300}
           height={300}
-          ref={ref => (this.image = ref)}
+          ref={ref => (this.imageRef = ref)}
         >
           <ImageFilters
             width={300}
             height={300}
-            temperature={10000}
-            sharpen={1}
+            temperature={10500}
+			sharpen={1}
+			sepia={0.1}
+			negative={0.3}
+			contrast={1}
+			saturation={1}
             hue={0.5}
             blur={0.5}
+            rotation={0.5}
+            scale={0.5}
           >
             https://vk.vkfaces.com/639827/v639827987/67cbc/aODwAJMQ8jM.jpg
           </ImageFilters>
