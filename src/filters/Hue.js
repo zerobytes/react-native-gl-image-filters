@@ -8,13 +8,9 @@ export default createGLComponent({
 	displayName: "Hue",
 	defaultProps: {
 		hue: 0,
-		width: 240,
-		height: 240,
 	},
 	propTypes: {
 		hue: PropTypes.number,
-		width: PropTypes.number.isRequired,
-		height: PropTypes.number.isRequired,
 	},
 	frag: `
     precision highp float;
@@ -36,5 +32,5 @@ export default createGLComponent({
       gl_FragColor = vec4(yiq2rgb * yFinalColor, c.a);
     }
   `,
-	receiveValues: ["hue", "resolution"]
+	receiveValues: ["hue"]
 });

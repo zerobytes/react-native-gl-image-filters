@@ -32,15 +32,15 @@ export default GL.createComponent(
 				.1, .1, .1, 0,
 				0.2, 0, -0.2, 1
 			], s);
-		console.log('SEPIA', width, height)
+
 		return (
 			<GL.Node
 				shader={shaders.Sepia}
-				width={width || 1}
-				height={height || 1}
+				// width={width || 1}
+				// height={height || 1}
 				uniforms={{
 					t, sepia,
-					resolution: [width || 1, height || 1]
+					// resolution: [width || 1, height || 1]
 				}}
 			/>
 		);
@@ -49,13 +49,9 @@ export default GL.createComponent(
 		displayName: "Sepia",
 		defaultProps: {
 			sepia: 0,
-			width: 240,
-			height: 240,
 		},
 		propTypes: {
 			children: PropTypes.any.isRequired,
-			width: PropTypes.number.isRequired,
-			height: PropTypes.number.isRequired,
 			sepia: PropTypes.number,
 		}
 	});

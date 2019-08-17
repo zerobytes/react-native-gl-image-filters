@@ -8,13 +8,9 @@ export default createGLComponent({
   displayName: "Sharpen",
   defaultProps: {
 	factor: 0,
-	width:240,
-	height:240,
   },
   propTypes: {
 	factor: PropTypes.number,
-	width: PropTypes.number.isRequired,
-	height: PropTypes.number.isRequired,
   },
   frag: `
     precision highp float;

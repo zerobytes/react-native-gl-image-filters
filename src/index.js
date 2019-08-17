@@ -11,70 +11,87 @@ import Sharpen from "./filters/Sharpen";
 import Negative from "./filters/Negative";
 import Temperature from "./filters/Temperature";
 import ContrastSaturationBrightness from "./filters/ContrastSaturationBrightness";
-
+import Rotate from "./filters/Rotate";
+// console.log('INDEX OF REACT GL IMAGE 8')
 export default GL.createComponent(
-({
-  children,
-  width,
-  height,
-  hue,
-  blur,
-  sepia,
-  sharpen,
-  negative,
-  contrast,
-  saturation,
-  brightness,
-  temperature
-}) => (
-//   <Sepia sepia={sepia} height={height} width={width}>
-    <Hue hue={hue} height={height} width={width}>
-      {/* <Negative factor={negative}  height={height} width={width}> */}
-        <Temperature temp={temperature}  height={height} width={width}>
-          <ContrastSaturationBrightness
-            contrast={contrast}
-            saturation={saturation}
-			brightness={brightness}
-			height={height} width={width}
-          >
-            <Blur factor={blur} passes={4} height={height} width={width}>
-              <Sharpen factor={sharpen} height={height} width={width}>
-                {children}
-              </Sharpen>
-            </Blur>
-          </ContrastSaturationBrightness>
-        </Temperature>
-      {/* </Negative> */}
-    </Hue>
-//   </Sepia>
-),
-{
-  displayName: "ImageFilter",
-  defaultProps: {
-    width: 240,
-    height: 240,
-    hue: 0,
-    blur: 0,
-    sepia: 0,
-    sharpen: 0,
-    negative: 0,
-    contrast: 1,
-    saturation: 1,
-    brightness: 1,
-    temperature: 6500
-  },
-  propTypes: {
-    children: PropTypes.node.isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-    hue: PropTypes.number,
-    blur: PropTypes.number,
-    sepia: PropTypes.number,
-    sharpen: PropTypes.number,
-    negative: PropTypes.number,
-    contrast: PropTypes.number,
-    saturation: PropTypes.number,
-    brightness: PropTypes.number,
-    temperature: PropTypes.number
-  }
-});
+	({
+		children,
+		width,
+		height,
+		hue,
+		blur,
+		sepia,
+		sharpen,
+		negative,
+		contrast,
+		saturation,
+		brightness,
+		temperature,
+		rotation,
+		scale,
+		position,
+	}) => (
+			<Sepia sepia={sepia} >
+				<Hue hue={hue} >
+					<Negative factor={negative} >
+						<Temperature temp={temperature} >
+							<ContrastSaturationBrightness
+								contrast={contrast}
+								saturation={saturation}
+								brightness={brightness}
+							>
+								<Blur factor={blur} passes={4} height={height} width={width}>
+									<Sharpen factor={sharpen} height={height} width={width} >
+										<Rotate
+											angle={rotation}
+											scale={scale}
+											leftRight={position ? position.leftRight: 0.0}
+											topBottom={position ? position.topBottom: 0.0}
+											height={height} width={width} 
+										>
+											{children}
+										</Rotate>
+									</Sharpen>
+								</Blur>
+							</ContrastSaturationBrightness>
+						</Temperature>
+					</Negative>
+				</Hue>
+			</Sepia>
+		),
+	{
+		displayName: "ImageFilter",
+		defaultProps: {
+			width: 240,
+			height: 240,
+			hue: 0,
+			blur: 0,
+			sepia: 0,
+			sharpen: 0,
+			negative: 0,
+			contrast: 1,
+			saturation: 1,
+			brightness: 1,
+			temperature: 6500,
+			rotation: 0,
+			scale: 1,
+			position:{leftRight:0.0,topBottom:0.0}
+		},
+		propTypes: {
+			children: PropTypes.node.isRequired,
+			width: PropTypes.number.isRequired,
+			height: PropTypes.number.isRequired,
+			hue: PropTypes.number,
+			blur: PropTypes.number,
+			sepia: PropTypes.number,
+			sharpen: PropTypes.number,
+			negative: PropTypes.number,
+			contrast: PropTypes.number,
+			saturation: PropTypes.number,
+			brightness: PropTypes.number,
+			temperature: PropTypes.number,
+			rotation: PropTypes.number,
+			scale: PropTypes.number,
+			position: PropTypes.object,
+		}
+	});

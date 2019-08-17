@@ -8,13 +8,9 @@ export default createGLComponent({
 	displayName: "Negative",
 	defaultProps: {
 		factor: 1,
-		width: 240,
-		height: 240,
 	},
 	propTypes: {
 		factor: PropTypes.number,
-		width: PropTypes.number.isRequired,
-		height: PropTypes.number.isRequired,
 	},
 	frag: `
     precision highp float;
@@ -28,5 +24,5 @@ export default createGLComponent({
       gl_FragColor = vec4(mix(c.rgb, 1.0 - c.rgb, factor), c.a);
     }
   `,
-	receiveValues: ["factor", "resolution"]
+	receiveValues: ["factor"]
 });

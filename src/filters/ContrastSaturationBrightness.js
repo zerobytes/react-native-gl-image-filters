@@ -10,15 +10,11 @@ export default createGLComponent({
 		contrast: 1,
 		saturation: 1,
 		brightness: 1,
-		width: 240,
-		height: 240,
 	},
 	propTypes: {
 		contrast: PropTypes.number,
 		saturation: PropTypes.number,
 		brightness: PropTypes.number,
-		width: PropTypes.number.isRequired,
-		height: PropTypes.number.isRequired,
 	},
 	frag: `
     precision highp float;
@@ -44,5 +40,5 @@ export default createGLComponent({
       );
     }
   `,
-	receiveValues: ["contrast", "saturation", "brightness", "resolution"]
+	receiveValues: ["contrast", "saturation", "brightness"]
 });

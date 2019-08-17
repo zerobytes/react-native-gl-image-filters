@@ -41,15 +41,14 @@ export default GL.createComponent(
 		passes,
 		directionForPass
 	}) => {
-		console.log('BLUR',width,height)
 		const rec = pass =>
 			pass <= 0 ? (
 				children
 			) : (
 					<GL.Node
 						shader={shaders.blur}
-						width={width || 1}
-						height={height || 1}
+						// width={width || 1}
+						// height={height || 1}
 						pixelRatio={pixelRatio}
 						uniforms={{
 							direction: directionForPass(pass, factor, passes),

@@ -18,7 +18,6 @@ export default ({
 	return GL.createComponent(
 		({ children: t, ...compProps }) => {
 			const innerProps = {};
-			console.log('INSIDE REACT GL IMAGE')
 			receiveValues.forEach(receive => {
 				Object.keys(compProps).forEach(key => {
 					if (receive === "resolution") {
@@ -30,12 +29,12 @@ export default ({
 					}
 				});
 			});
-			console.log('PROP', innerProps, compProps)
 			return (
 				<GL.Node
 					shader={shaders.shader}
-					width={Math.floor(compProps.width || 1)}
-					height={Math.floor(compProps.height || 1)}
+					backbuffering
+					sync
+					uniformsOptions={{ t: { interpolation: "nearest" } }}
 					uniforms={{
 						t, ...innerProps
 					}}

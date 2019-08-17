@@ -8,13 +8,9 @@ export default createGLComponent({
 	displayName: "Temperature",
 	defaultProps: {
 		temp: 6500,
-		width: 240,
-		height: 240,
 	},
 	propTypes: {
 		temp: PropTypes.number,
-		width: PropTypes.number.isRequired,
-		height: PropTypes.number.isRequired,
 	},
 	frag: `
     precision highp float;
@@ -53,5 +49,5 @@ export default createGLComponent({
       gl_FragColor = vec4(outColor, 1.0);
     }
   `,
-	receiveValues: ["temp", "resolution"]
+	receiveValues: ["temp"]
 });
